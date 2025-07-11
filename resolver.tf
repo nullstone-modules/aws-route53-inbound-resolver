@@ -13,6 +13,10 @@ resource "aws_route53_resolver_endpoint" "inbound" {
   }
 }
 
+locals {
+  resolver_ips = join(",", aws_route53_resolver_endpoint.inbound.ip_address.*.ip)
+}
+
 resource "aws_ram_resource_share" "this" {
   name                      = local.resource_name
   allow_external_principals = true
