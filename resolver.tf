@@ -16,21 +16,3 @@ resource "aws_route53_resolver_endpoint" "inbound" {
 locals {
   resolver_ips = join(",", aws_route53_resolver_endpoint.inbound.ip_address.*.ip)
 }
-
-resource "aws_ram_resource_share" "this" {
-  name                      = local.resource_name
-  allow_external_principals = true
-  tags                      = local.tags
-}
-
-resource "aws_ram_principal_association" "this" {
-  for_each = var.aws_account_ids
-
-  resource_share_arn = aws_ram_resource_share.this.arn
-  principal          = each.value
-}
-
-resource "aws_ram_resource_association" "this" {
-  resource_share_arn = aws_ram_resource_share.this.arn
-  resource_arn       = aws_route53_resolver_endpoint.inbound.arn
-}
