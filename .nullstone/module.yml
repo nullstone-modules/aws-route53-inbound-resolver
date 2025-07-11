@@ -1,0 +1,13 @@
+org_name: nullstone
+name: aws-route53-inbound-resolver
+friendly_name: Route53 Inbound Resolver
+description: Creates an inbound Route53 resolver that allows you to share private Route53 DNS with other AWS accounts
+category: block
+subcategory: ""
+provider_types:
+    - aws
+platform: route53
+subplatform: ""
+type: ""
+appCategories: []
+is_public: true
