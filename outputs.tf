@@ -4,6 +4,6 @@ output "resolver_arn" {
 }
 
 output "resolver_ips" {
-  value       = local.resolver_ips
-  description = "string ||| A list of IP addresses for the Route53 Resolver nameservers."
+  value       = aws_route53_resolver_endpoint.inbound.ip_address.*.ip
+  description = "list(string) ||| A list of IP addresses for the Route53 Resolver nameservers."
 }
