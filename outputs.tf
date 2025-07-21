@@ -3,6 +3,11 @@ output "resolver_arn" {
   description = "string ||| The ARN of the Route53 Resolver nameservers."
 }
 
+output "resolver_id" {
+  value       = aws_route53_resolver_endpoint.inbound.id
+  description = "string ||| The ID of the Route53 Resolver nameservers."
+}
+
 output "resolver_ips" {
   value       = aws_route53_resolver_endpoint.inbound.ip_address.*.ip
   description = "list(string) ||| A list of IP addresses for the Route53 Resolver nameservers."
